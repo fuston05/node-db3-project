@@ -42,8 +42,9 @@ function add(schemeData){
 
 function addStep(stepData, id){
   return db('steps')
-  .where(scheme_id = id)
-  .insert(stepData);
+  .join('schemes', 'schemes.id', id)
+  .insert(stepData)
+  // .where({id: scheme_id})
 }//end find
 
 function update(changes, id){
